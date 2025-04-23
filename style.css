@@ -79,31 +79,37 @@ main {
   padding: 40px 20px;
 }
 
+/* Estilo para a seção de projetos */
 #repos-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 20px;
+  padding: 20px;
 }
 
 .repo {
-  background: var(--card-background);
-  border: 1px solid var(--card-border);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 15px;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .repo:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 20px var(--primary-color);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .repo h3 {
-  margin: 0 0 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.repo p {
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .repo h3 a {
@@ -113,11 +119,6 @@ main {
 
 .repo h3 a:hover {
   text-decoration: underline;
-}
-
-.repo p {
-  font-size: 1rem;
-  color: #8b949e;
 }
 
 footer {
@@ -192,8 +193,8 @@ button:hover, a:hover {
 
 /* Estilo para a barra de pesquisa */
 #search-repos {
-  width: 100%;
-  max-width: 400px;
+  grid-column: 1 / -1; /* Faz a barra ocupar toda a largura da grade */
+  margin-bottom: 20px;
   padding: 10px 15px;
   font-size: 1rem;
   border: 2px solid #6a11cb;
