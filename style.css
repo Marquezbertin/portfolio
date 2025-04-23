@@ -149,3 +149,19 @@ footer p {
     padding: 20px;
   }
 }
+
+/* Transições suaves */
+button, a {
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover, a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Tema escuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
