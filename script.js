@@ -47,3 +47,10 @@ toggleTheme.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
 document.body.prepend(toggleTheme);
+
+const themeSelector = document.getElementById("theme");
+
+themeSelector.addEventListener("change", (e) => {
+  const selectedTheme = e.target.value;
+  document.body.className = selectedTheme; // Define a classe do body como o tema selecionado
+});

@@ -17,6 +17,36 @@ body {
   line-height: 1.6;
 }
 
+/* Tema padrão */
+body.default {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Tema escuro */
+body.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Tema claro */
+body.light {
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* Tema azul */
+body.blue {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+/* Tema verde */
+body.green {
+  background-color: #e8f5e9;
+  color: #1b5e20;
+}
+
 header {
   text-align: center;
   padding: 60px 20px;
@@ -226,4 +256,8 @@ nav ul {
   justify-content: center;
   list-style: none;
   padding: 0;
+}
+
+#about-me p {
+  text-align: justify; /* Justifica o texto */
 }
