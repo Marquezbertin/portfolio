@@ -62,22 +62,25 @@ p {
   font-size: 1.2rem;
 }
 
-.social-links a {
+.social-links a,
+#contato ul li a {
   display: inline-block;
-  padding: 8px 16px; /* Reduzindo o tamanho do padding */
-  font-size: 14px; /* Diminuindo o tamanho da fonte */
-  border-radius: 5px; /* Ajustando o arredondamento */
+  padding: 6px 12px; /* Reduzindo o padding */
+  font-size: 12px; /* Diminuindo o tamanho da fonte */
+  border-radius: 4px; /* Ajustando o arredondamento */
   text-align: center;
-  margin: 5px; /* Espaçamento entre os botões */
+  margin: 4px; /* Reduzindo o espaçamento entre os botões */
+  background: linear-gradient(90deg, #6a11cb, #2575fc); /* Mantendo o gradiente */
   color: white;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s, transform 0.3s;
 }
 
-.social-links a:hover {
+.social-links a:hover,
+#contato ul li a:hover {
   transform: scale(1.05); /* Efeito hover mais sutil */
   color: var(--secondary-color);
+  opacity: 0.9;
 }
 
 main {
