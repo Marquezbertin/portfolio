@@ -54,3 +54,36 @@ themeSelector.addEventListener("change", (e) => {
   const selectedTheme = e.target.value;
   document.body.className = selectedTheme; // Define a classe do body como o tema selecionado
 });
+
+// Função para preencher os projetos no resumo
+function populatePrintableProjects(repos) {
+  const printableProjects = document.getElementById("printable-projects");
+  printableProjects.innerHTML = ""; // Limpa o conteúdo anterior
+
+  repos.forEach(repo => {
+    const projectElement = document.createElement("div");
+    projectElement.innerHTML = `
+      <h3>${repo.name}</h3>
+      <p>${repo.description || "Sem descrição"}</p>
+      <p><strong>Linguagem:</strong> ${repo.language || "Não especificada"}</p>
+    `;
+    printableProjects.appendChild(projectElement);
+  });
+}
+
+// Botão de impressão
+document.getElementById("print-button").addEventListener("click", () => {
+  const printableContent = document.getElementById("printable-content");
+  printableContent.style.display = "block"; // Torna o conteúdo visível para impressão
+  window.print();
+  printableContent.style.display = "none"; // Oculta novamente após a impressão
+});
+
+// Fetch de repositórios e preenchimento do resumo
+fetch(`https://api.github.com/users/${username}/repos`)
+  .then(response => response.json())
+  .then(repos => {
+    const publicRepos = repos.filter(repo => !repo.private); // Filtra apenas repositórios públicos
+    populatePrintableProjects(publicRepos); // Preenche os projetos no resumo
+  })
+  .catch(error => console.error("Erro ao buscar repositórios:", error));
