@@ -25,7 +25,9 @@ fetch(`https://api.github.com/users/${username}/repos`)
 const searchInput = document.getElementById("search-repos");
 searchInput.addEventListener("input", (e) => {
   const query = e.target.value.toLowerCase();
-  document.querySelectorAll(".repo").forEach(repo => {
+  const repos = document.querySelectorAll(".repo"); // Certifique-se de que os repositórios têm a classe "repo"
+  
+  repos.forEach(repo => {
     const repoName = repo.querySelector("h3").textContent.toLowerCase();
     repo.style.display = repoName.includes(query) ? "block" : "none";
   });
