@@ -1,12 +1,12 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js', // Caminho de entrada do seu arquivo principal
+    entry: './src/index.js', // Caminho relativo para o script de entrada
     output: {
-        filename: 'bundle.js', // Nome do arquivo de saída
-        path: path.resolve(__dirname, 'dist'), // Diretório de saída
+        path: path.resolve(__dirname, 'dist'), // Caminho relativo para a pasta de saída
+        filename: 'bundle.js',
     },
-    module: {
+    module: { // Corrigido: "module" agora está dentro do objeto principal
         rules: [
             {
                 test: /\.js$/,
