@@ -20,3 +20,21 @@ fetch(`https://api.github.com/users/${username}/repos`)
     });
   })
   .catch(error => console.error("Erro ao buscar repositórios:", error));
+
+// Filtro de repositórios
+const searchInput = document.getElementById("search-repos");
+searchInput.addEventListener("input", (e) => {
+  const query = e.target.value.toLowerCase();
+  document.querySelectorAll(".repo").forEach(repo => {
+    const repoName = repo.querySelector("h3").textContent.toLowerCase();
+    repo.style.display = repoName.includes(query) ? "block" : "none";
+  });
+});
+
+// Tema escuro/claro
+const toggleTheme = document.createElement("button");
+toggleTheme.textContent = "Alternar Tema";
+toggleTheme.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+document.body.prepend(toggleTheme);
