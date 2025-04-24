@@ -107,3 +107,38 @@ window.addEventListener("click", (event) => {
     experiencePopup.style.display = "none";
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const blogContainer = document.getElementById("blog-articles");
+
+  // Simulação de dados do blog (substitua pela URL da API ou feed RSS do blog)
+  const blogArticles = [
+    {
+      title: "O Impacto da Inteligência Artificial no QA",
+      description: "Descubra como a IA está transformando o mundo do Quality Assurance.",
+      link: "https://www.despertarqa.net/post/despertar-para-qualidade-de-software-o-impacto-da-intelig%C3%AAncia-artificial-ia-em-qa"
+    },
+    {
+      title: "Star Wars e QA: Lições de Qualidade de Software",
+      description: "Uma abordagem criativa para entender os princípios do QA através do universo Star Wars.",
+      link: "https://www.despertarqa.net/post/principais-desafios-na-carreira-de-um-qa-um-olhar-atrav%C3%A9s-da-lente-de-the-acolyte-star-wars"
+    },
+    {
+      title: "Ferramentas Essenciais para Automação de Testes",
+      description: "Conheça as ferramentas indispensáveis para profissionais de QA.",
+      link: "https://www.despertarqa.net/post/analisar-e-corrigir-gargalos-a-jornada-dos-jedis-da-qualidade-de-software"
+    }
+  ];
+
+  // Renderizar os artigos no HTML
+  blogArticles.forEach(article => {
+    const articleElement = document.createElement("div");
+    articleElement.classList.add("blog-article");
+    articleElement.innerHTML = `
+      <h3>${article.title}</h3>
+      <p>${article.description}</p>
+      <a href="${article.link}" target="_blank" class="button">Leia mais</a>
+    `;
+    blogContainer.appendChild(articleElement);
+  });
+});
