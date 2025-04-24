@@ -87,3 +87,23 @@ fetch(`https://api.github.com/users/${username}/repos`)
     populatePrintableProjects(publicRepos); // Preenche os projetos no resumo
   })
   .catch(error => console.error("Erro ao buscar repositórios:", error));
+
+// Abrir e fechar o popup de Experiências Profissionais
+const experienceButton = document.getElementById("experience-button");
+const experiencePopup = document.getElementById("experience-popup");
+const closePopup = document.getElementById("close-popup");
+
+experienceButton.addEventListener("click", () => {
+  experiencePopup.style.display = "flex"; // Exibe o popup
+});
+
+closePopup.addEventListener("click", () => {
+  experiencePopup.style.display = "none"; // Oculta o popup
+});
+
+// Fechar o popup ao clicar fora do conteúdo
+window.addEventListener("click", (event) => {
+  if (event.target === experiencePopup) {
+    experiencePopup.style.display = "none";
+  }
+});
