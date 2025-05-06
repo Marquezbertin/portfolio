@@ -100,7 +100,7 @@ p {
   font-size: 1.2rem;
 }
 
-.social-links a,
+social-links a,
 #contato ul li a {
   display: inline-block;
   padding: 6px 12px; /* Reduzindo o padding */
@@ -354,71 +354,52 @@ close-button:hover {
 }
 
 #palestra {
-  background-color: var(--card-background); /* Cor de fundo consistente com os cards */
-  color: var(--text-color); /* Cor do texto */
-  padding: 20px;
-  border-radius: 10px; /* Bordas arredondadas */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
-  margin-top: 20px;
+    padding: 2rem;
+    background: var(--card-bg, rgba(255, 255, 255, 0.1));
+    border-radius: 8px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #palestra h2 {
-  color: var(--primary-color); /* Destaque no título */
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+    color: var(--heading-color, #2a2a2a);
+    margin-bottom: 1rem;
 }
 
 #palestra p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 15px;
+    color: var(--text-color, #333);
+    margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 #palestra ul {
-  list-style: disc;
-  padding-left: 20px;
-  margin-bottom: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
 }
 
-#palestra ul li {
-  margin-bottom: 5px;
+#palestra li {
+    color: var(--text-color, #333);
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+}
+
+#palestra li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color, #4A6FFF);
 }
 
 #palestra a {
-  color: var(--primary-color); /* Links com a cor primária */
-  text-decoration: none;
-  font-weight: bold;
+    color: var(--link-color, #4A6FFF);
+    text-decoration: none;
+    font-weight: 500;
 }
 
 #palestra a:hover {
-  text-decoration: underline;
-  color: var(--secondary-color); /* Destaque ao passar o mouse */
-}
-
-#palestra iframe {
-  border: none;
-  border-radius: 8px; /* Bordas arredondadas no vídeo */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra no vídeo */
-  margin-top: 15px;
-}
-
-#palestra .button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  background: var(--gradient); /* Gradiente usado no site */
-  border-radius: 30px;
-  text-decoration: none;
-  text-align: center;
-  margin-top: 15px;
-  transition: all 0.3s ease-in-out;
-}
-
-#palestra .button:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+    text-decoration: underline;
 }
 
 /* Efeitos de scroll suave */
