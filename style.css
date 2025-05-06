@@ -2,8 +2,8 @@
   /* Cores principais */
   --primary-color: #2563eb;
   --secondary-color: #7c3aed;
-  --background-color: #0f172a;
-  --text-color: #e2e8f0;
+  --background-color: #f8f9fa;
+  --text-color: #2d3748;
   
   /* Cores do tema claro */
   --text-color-light: #333333;
@@ -39,6 +39,47 @@
   --border-radius-md: 8px;
   --border-radius-lg: 16px;
   --border-radius-full: 9999px;
+
+  /* Cores principais atualizadas */
+  --primary-color: #2563eb;
+  --secondary-color: #7c3aed;
+  
+  /* Tema claro */
+  --background-light: #ffffff;
+  --text-primary-light: #1a1a1a;
+  --text-secondary-light: #4a4a4a;
+  --card-bg-light: #f8f9fa;
+  --card-border-light: #e9ecef;
+  
+  /* Tema escuro */
+  --background-dark: #121212;
+  --text-primary-dark: #ffffff;
+  --text-secondary-dark: #e0e0e0;
+  --card-bg-dark: #1e1e1e;
+  --card-border-dark: #333333;
+  --link-color-dark: #66B2FF;
+  
+  /* Tema azul */
+  --background-blue: #1a237e;
+  --text-primary-blue: #ffffff;
+  --text-secondary-blue: #e3f2fd;
+  --card-bg-blue: #283593;
+  --card-border-blue: #3949ab;
+  --link-color-blue: #90caf9;
+  
+  /* Tema verde */
+  --background-green: #1b5e20;
+  --text-primary-green: #ffffff;
+  --text-secondary-green: #c8e6c9;
+  --card-bg-green: #2e7d32;
+  --card-border-green: #388e3c;
+  --link-color-green: #b9f6ca;
+  
+  /* Elementos de UI melhorados */
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.2);
+  --glass-background: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 /* Animações globais */
@@ -56,40 +97,123 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Inter', 'Poppins', sans-serif;
   background: var(--background-color);
   color: var(--text-color);
   line-height: 1.7;
+  font-size: 16px;
+  letter-spacing: 0.3px;
 }
 
 /* Tema padrão */
 body.default {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.default h1,
+body.default h2,
+body.default h3 {
+  color: var(--text-color);
+}
+
+body.default p,
+body.default li {
+  color: var(--text-secondary);
 }
 
 /* Tema escuro */
 body.dark {
-  background-color: #121212;
-  color: #fff;
+  background-color: var(--background-dark);
+  color: var(--text-primary-dark);
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p,
+body.dark li {
+  color: var(--text-primary-dark) !important;
 }
 
 /* Tema claro */
 body.light {
-  background-color: #ffffff;
-  color: #000;
+  background-color: var(--background-light);
+  color: var(--text-primary-light);
+}
+
+body.light h1,
+body.light h2,
+body.light h3 {
+  color: var(--text-primary-light);
+  font-weight: 600;
+}
+
+body.light p,
+body.light li {
+  color: var(--text-secondary-light);
 }
 
 /* Tema azul */
 body.blue {
-  background-color: #e3f2fd;
-  color: #0d47a1;
+  background-color: var(--background-blue);
+}
+
+body.blue h1,
+body.blue h2,
+body.blue h3,
+body.blue p,
+body.blue li,
+body.blue span {
+  color: var(--text-primary-blue) !important;
+}
+
+body.blue .project-card,
+body.blue .blog-article,
+body.blue #palestra {
+  background-color: var(--card-bg-blue);
+  border-color: var(--card-border-blue);
+  color: var(--text-primary-blue);
+}
+
+body.blue .project-card h3,
+body.blue .blog-article h3,
+body.blue #palestra h3,
+body.blue .project-card p,
+body.blue .blog-article p,
+body.blue #palestra p {
+  color: var(--text-primary-blue) !important;
 }
 
 /* Tema verde */
 body.green {
-  background-color: #e8f5e9;
-  color: #1b5e20;
+  background-color: var(--background-green);
+}
+
+body.green h1,
+body.green h2,
+body.green h3,
+body.green p,
+body.green li,
+body.green span {
+  color: var(--text-primary-green) !important;
+}
+
+body.green .project-card,
+body.green .blog-article,
+body.green #palestra {
+  background-color: var(--card-bg-green);
+  border-color: var(--card-border-green);
+  color: var(--text-primary-green);
+}
+
+body.green .project-card h3,
+body.green .blog-article h3,
+body.green #palestra h3,
+body.green .project-card p,
+body.green .blog-article p,
+body.green #palestra p {
+  color: var(--text-primary-green) !important;
 }
 
 /* Header moderno com glassmorphism */
@@ -122,8 +246,24 @@ header {
 }
 
 h1 {
-  font-size: var(--font-size-h1);
-  margin: var(--spacing-sm) 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 p {
@@ -218,7 +358,15 @@ footer p {
   }
 
   h1 {
-    font-size: var(--font-size-h2);
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
   }
 
   main {
@@ -331,11 +479,16 @@ nav ul {
 }
 
 .blog-article {
-  background: var(--card-background);
+  background: var(--card-bg-light);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
   box-shadow: 0 4px 6px var(--shadow-color);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-article:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
 }
 
 /* Estilo do popup */
@@ -551,20 +704,25 @@ html {
 }
 
 .youtube-btn {
-  display: inline-block;
-  padding: var(--spacing-sm) var(--spacing-md);
-  background: var(--gradient-primary);
-  color: white;
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
   border-radius: var(--border-radius-md);
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   transition: all 0.3s ease;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .youtube-btn:hover {
+  background: var(--secondary-color);
   transform: translateY(-2px);
-  opacity: 0.9;
-  box-shadow: 0 4px 12px var(--shadow-color);
+  box-shadow: var(--card-shadow);
 }
 
 .projects-grid {
@@ -575,15 +733,17 @@ html {
 }
 
 .project-card {
-  background: var(--card-background);
+  background: var(--card-bg-light);
   border-radius: var(--border-radius-md);
   padding: var(--spacing-lg);
-  box-shadow: 0 4px 6px var(--shadow-color);
-  transition: transform 0.3s ease;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .project-card h3 {
@@ -797,4 +957,181 @@ body.dark a {
 [data-theme='dark'] a:hover,
 body.dark a:hover {
     color: #66B2FF !important;
+}
+
+/* Melhorar legibilidade dos links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Melhorar espaçamento e layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+section {
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-lg) 0;
+}
+
+/* Botões mais profissionais */
+.button,
+.youtube-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover,
+.youtube-btn:hover {
+  background: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
+}
+
+/* Melhorar contraste em todos os temas */
+[data-theme] {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme='light'] .card,
+[data-theme='light'] .project-card,
+[data-theme='light'] .blog-article {
+  background: var(--card-bg-light);
+  color: var(--text-primary-light);
+}
+
+[data-theme='dark'] .card,
+[data-theme='dark'] .project-card,
+[data-theme='dark'] .blog-article {
+  background: var(--card-bg-dark);
+  color: var(--text-primary-dark);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Links em diferentes temas */
+body.dark a {
+  color: var(--link-color-dark);
+}
+
+body.blue a {
+  color: var(--link-color-blue) !important;
+}
+
+body.green a {
+  color: var(--link-color-green) !important;
+}
+
+/* Cards em diferentes temas */
+body.dark .project-card,
+body.dark .blog-article,
+body.dark #palestra {
+  background-color: var(--card-bg-dark);
+  border-color: var(--card-border-dark);
+}
+
+body.blue .project-card,
+body.blue .blog-article,
+body.blue #palestra {
+  background-color: var(--card-bg-blue);
+  border-color: var(--card-border-blue);
+}
+
+body.green .project-card,
+body.green .blog-article,
+body.green #palestra {
+  background-color: var(--card-bg-green);
+  border-color: var(--card-border-green);
+}
+
+/* Garantir legibilidade em todos os temas */
+.project-card,
+.blog-article,
+#palestra {
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.project-card h3,
+.blog-article h3,
+#palestra h3 {
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+}
+
+/* Melhorar contraste dos botões em todos os temas */
+.button,
+.youtube-btn {
+  color: white !important;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste do contraste para textos em cards */
+[data-theme] .project-card,
+[data-theme] .blog-article,
+[data-theme] #palestra {
+  color: inherit !important;
+}
+
+/* Remover !important desnecessários e redundâncias */
+[data-theme] *,
+body[class] * {
+  color: inherit;
+}
+
+/* Ajuste de contraste para elementos glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.blue .glass-card,
+body.green .glass-card {
+  color: white !important;
 }
