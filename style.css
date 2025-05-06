@@ -503,3 +503,19 @@ html {
 .youtube-button:hover {
   background-color: #CC0000;
 }
+
+.youtube-btn {
+  background-color: #4A6FFF;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.youtube-btn:hover {
+  background-color: #3557DB;
+  transition: background-color 0.3s ease;
+}
