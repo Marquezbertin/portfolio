@@ -663,3 +663,138 @@ body.light #testimonials blockquote {
     border: 1px solid #e0e0e0;
     color: #333333;
 }
+
+/* Estilos para a seção de palestra */
+#palestra {
+    background: var(--card-background);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+}
+
+#palestra h2 {
+    color: var(--text-color);
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+#palestra p {
+    color: var(--text-color);
+    font-size: var(--font-size-normal);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Ajustes para o tema claro */
+[data-theme='light'] #palestra,
+body.light #palestra {
+    background: var(--card-bg-light);
+}
+
+[data-theme='light'] #palestra h2,
+[data-theme='light'] #palestra p,
+[data-theme='light'] #palestra ul,
+[data-theme='light'] #palestra li {
+    color: var(--text-color-light) !important;
+}
+
+/* Tema escuro */
+[data-theme='dark'] #palestra,
+body.dark #palestra {
+    background: var(--card-background);
+}
+
+[data-theme='dark'] #palestra h2,
+[data-theme='dark'] #palestra p,
+[data-theme='dark'] #palestra ul,
+[data-theme='dark'] #palestra li {
+    color: var(--text-color) !important;
+}
+
+/* Mantém o texto claro no tema escuro (já definido nas variáveis base) */
+[data-theme='dark'] #palestra h2,
+[data-theme='dark'] #palestra p {
+    color: var(--text-color);
+}
+
+/* Reset de cores para tema claro */
+[data-theme='light'],
+body.light {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+[data-theme='light'] h1,
+[data-theme='light'] h2,
+[data-theme='light'] h3,
+[data-theme='light'] p,
+[data-theme='light'] li,
+[data-theme='light'] span,
+[data-theme='light'] strong,
+body.light h1,
+body.light h2,
+body.light h3,
+body.light p,
+body.light li,
+body.light span,
+body.light strong {
+    color: #333333 !important;
+}
+
+/* Específico para a seção palestra */
+[data-theme='light'] #palestra,
+body.light #palestra {
+    background-color: #ffffff;
+}
+
+[data-theme='light'] #palestra *,
+body.light #palestra * {
+    color: #333333 !important;
+}
+
+/* Reset de cores para tema escuro */
+[data-theme='dark'],
+body.dark {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+[data-theme='dark'] h1,
+[data-theme='dark'] h2,
+[data-theme='dark'] h3,
+[data-theme='dark'] p,
+[data-theme='dark'] li,
+[data-theme='dark'] span,
+[data-theme='dark'] strong,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark p,
+body.dark li,
+body.dark span,
+body.dark strong {
+    color: #ffffff !important;
+}
+
+/* Específico para a seção palestra */
+[data-theme='dark'] #palestra,
+body.dark #palestra {
+    background-color: #1a1a1a;
+}
+
+[data-theme='dark'] #palestra *,
+body.dark #palestra * {
+    color: #ffffff !important;
+}
+
+/* Para garantir que links também fiquem visíveis */
+[data-theme='dark'] a,
+body.dark a {
+    color: #4A9EFF !important;
+}
+
+[data-theme='dark'] a:hover,
+body.dark a:hover {
+    color: #66B2FF !important;
+}
