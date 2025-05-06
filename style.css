@@ -135,13 +135,7 @@ main {
 
 /* Cards modernos com glassmorphism */
 .repo {
-  background: var(--glass-background);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 25px;
-  transition: all 0.4s ease;
-  animation: fadeIn 0.6s ease-out;
+  /* Remover todo o estilo .repo pois está duplicando funcionalidade */
 }
 
 .repo:hover {
