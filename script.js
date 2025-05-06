@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (themeSelector) {
     themeSelector.addEventListener("change", (e) => {
       const selectedTheme = e.target.value;
-      document.body.className = selectedTheme;
+      setTheme(selectedTheme);
 
       if (experiencePopup) {
         if (selectedTheme === 'dark') {
@@ -163,3 +163,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function setTheme(theme) {
+  localStorage.setItem('theme', theme);
+  document.body.className = theme;
+}
+
+// Recuperar tema salvo
+const savedTheme = localStorage.getItem('theme') || 'default';
+document.body.className = savedTheme;
