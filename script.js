@@ -148,57 +148,51 @@ const savedTheme = localStorage.getItem('theme') || 'default';
 document.body.className = savedTheme;
 
 async function fetchGitHubRepos() {
-  try {
-    const response = await fetch('https://api.github.com/users/Marquezbertin/repos');
-    const repos = await response.json();
-    
-    const reposContainer = document.getElementById('repos-container');
-    const reposList = document.createElement('div');
-    reposList.className = 'repos-list';
-    
-    repos.forEach(repo => {
-        const repoElement = document.createElement('div');
-        repoElement.className = 'repo-card';
-        repoElement.innerHTML = `
-            <h3>${repo.name}</h3>
-            <p>${repo.description || 'Sem descrição disponível'}</p>
-            <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
-        `;
-        reposList.appendChild(repoElement);
-    });
-    
-    // Adiciona após o campo de busca
-    const searchInput = document.getElementById('search-repos');
-    searchInput.insertAdjacentElement('afterend', reposList);
-    
-  } catch (error) {
-    console.error('Erro ao carregar repositórios:', error);
-  }
-}
-
-async function loadGitHubProjects() {
-  try {
-    const response = await fetch('https://api.github.com/users/Marquezbertin/repos');
-    const projects = await response.json();
-    
+    const username = 'Marquezbertin';
     const projectsGrid = document.querySelector('.projects-grid');
-    projectsGrid.innerHTML = ''; // Limpa o conteúdo existente
     
-    projects.forEach(project => {
-      const card = document.createElement('div');
-      card.className = 'project-card';
-      card.innerHTML = `
-        <h3>${project.name}</h3>
-        <p>${project.description || 'Sem descrição disponível'}</p>
-        <div class="project-links">
-          <a href="${project.html_url}" target="_blank">GitHub</a>
-        </div>
-      `;
-      projectsGrid.appendChild(card);
-    });
-  } catch (error) {
-    console.error('Erro ao carregar projetos:', error);
-  }
+    try {
+        const response = await fetch(`https://api.github.com/users/${username}/repos`);
+        const repos = await response.json();
+        
+        projectsGrid.innerHTML = ''; // Limpa o conteúdo existente
+        
+        repos.forEach(repo => {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <h3>${repo.name}</h3>
+                <p>${repo.description || 'Sem descrição disponível'}</p>
+                <div class="project-links">
+                    <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
+                </div>
+            `;
+            projectsGrid.appendChild(card);
+        });
+
+        // Implementa a funcionalidade de busca
+        const searchInput = document.getElementById('search-repos');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.project-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+    } catch (error) {
+        console.error('Erro ao carregar repositórios:', error);
+        projectsGrid.innerHTML = '<p class="error">Erro ao carregar os repositórios. Por favor, tente novamente mais tarde.</p>';
+    }
 }
 
-document.addEventListener('DOMContentLoaded', loadGitHubProjects);
+// Carrega os repositórios quando a página é carregada
+document.addEventListener('DOMContentLoaded', fetchGitHubRepos);
