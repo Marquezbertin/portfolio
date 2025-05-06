@@ -1,19 +1,44 @@
 :root {
+  /* Cores principais */
   --primary-color: #2563eb;
   --secondary-color: #7c3aed;
   --background-color: #0f172a;
   --text-color: #e2e8f0;
-  --card-background: rgba(255, 255, 255, 0.05);
-  --card-border: rgba(255, 255, 255, 0.1);
-  --gradient: linear-gradient(135deg, #2563eb, #7c3aed);
-  --glass-background: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --shadow-color: rgba(0, 0, 0, 0.15);
-  /* Variáveis para o tema claro */
+  
+  /* Cores do tema claro */
   --text-color-light: #333333;
   --text-secondary-light: #555555;
   --heading-color-light: #222222;
   --card-bg-light: #ffffff;
+  
+  /* Elementos de UI */
+  --card-background: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --glass-background: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(90deg, #6a11cb, #2575fc);
+  
+  /* Tipografia */
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2rem;
+  --font-size-h3: 1.5rem;
+  --font-size-normal: 1rem;
+  --font-size-small: 0.875rem;
+  
+  /* Espaçamento */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 9999px;
 }
 
 /* Animações globais */
@@ -97,33 +122,34 @@ header {
 }
 
 h1 {
-  font-size: 2.5rem;
-  margin: 10px 0;
+  font-size: var(--font-size-h1);
+  margin: var(--spacing-sm) 0;
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: var(--font-size-normal);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-sm);
 }
 
 social-links a,
 #contato ul li a {
   display: inline-block;
-  padding: 6px 12px; /* Reduzindo o padding */
-  font-size: 12px; /* Diminuindo o tamanho da fonte */
-  border-radius: 4px; /* Ajustando o arredondamento */
-  text-align: center;
-  margin: 4px; /* Reduzindo o espaçamento entre os botões */
-  background: linear-gradient(90deg, #6a11cb, #2575fc); /* Mantendo o gradiente */
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gradient-primary);
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .social-links a:hover,
 #contato ul li a:hover {
-  transform: scale(1.05); /* Efeito hover mais sutil */
-  color: var(--secondary-color);
+  transform: translateY(-2px);
   opacity: 0.9;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  color: var(--secondary-color);
 }
 
 main {
@@ -150,12 +176,13 @@ main {
 }
 
 .repo h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
 }
 
 .repo p {
-  font-size: 0.9rem;
+  font-size: var(--font-size-small);
   line-height: 1.5;
 }
 
@@ -191,7 +218,7 @@ footer p {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: var(--font-size-h2);
   }
 
   main {
@@ -231,20 +258,20 @@ body.dark-mode {
 
 /* Botões modernos */
 .button, button {
-  background: var(--gradient);
-  border: none;
-  border-radius: 30px;
-  padding: 12px 30px;
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gradient-primary);
   color: white;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  box-shadow: 0 5px 15px var(--shadow-color);
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
 .button:hover, button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px var(--shadow-color);
+  transform: translateY(-2px);
+  opacity: 0.9;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* Barra de pesquisa moderna */
@@ -280,20 +307,19 @@ nav ul {
 
 #blog .button {
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: bold;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gradient-primary);
   color: white;
   text-decoration: none;
-  border-radius: 5px;
-  background: linear-gradient(90deg, #6a11cb, #2575fc);
-  text-align: center;
-  margin-top: 10px;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 #blog .button:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
   opacity: 0.9;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* Seção de blog moderna */
@@ -305,12 +331,11 @@ nav ul {
 }
 
 .blog-article {
-  background: var(--glass-background);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 25px;
-  transition: all 0.4s ease;
+  background: var(--card-background);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: transform 0.3s ease;
 }
 
 /* Estilo do popup */
@@ -526,19 +551,20 @@ html {
 }
 
 .youtube-btn {
-  background-color: #4A6FFF;
-  color: white;
-  padding: 15px 30px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 500;
   display: inline-block;
-  margin-top: 20px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gradient-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .youtube-btn:hover {
-  background-color: #3557DB;
-  transition: background-color 0.3s ease;
+  transform: translateY(-2px);
+  opacity: 0.9;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 .projects-grid {
@@ -549,10 +575,10 @@ html {
 }
 
 .project-card {
-  background: var(--card-bg, #2a2a2a);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--card-background);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 6px var(--shadow-color);
   transition: transform 0.3s ease;
 }
 
@@ -562,26 +588,30 @@ html {
 
 .project-card h3 {
   color: var(--text-color);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
 }
 
 .project-card p {
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-md);
 }
 
 .project-links a {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--primary-color, #4A6FFF);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gradient-primary);
   color: white;
   text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .project-links a:hover {
-  background: var(--primary-hover, #3557DB);
+  transform: translateY(-2px);
+  opacity: 0.9;
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* Seção do blog com melhor contraste */
@@ -605,13 +635,14 @@ body.light .blog-article p {
 
 [data-theme='light'] .blog-article .leia-mais,
 body.light .blog-article .leia-mais {
-    background: var(--primary-color);
-    color: #ffffff;
-    padding: 8px 16px;
-    border-radius: 4px;
-    display: inline-block;
-    text-decoration: none;
-    margin-top: 10px;
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--gradient-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 [data-theme='light'] .blog-article strong,
