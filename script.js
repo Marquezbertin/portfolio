@@ -1,15 +1,27 @@
-const username = "Marquezbertin";
+document.addEventListener("DOMContentLoaded", () => {
+  const username = "Marquezbertin";
 
-fetch(`https://api.github.com/users/${username}/repos`)
-  .then(response => response.json())
-  .then(repos => {
-    const reposContainer = document.getElementById("repos-container");
-    const displayedRepos = new Set(); // Usar um Set para evitar duplicatas
+  const reposContainer = document.getElementById("repos-container");
+  const searchInput = document.getElementById("search-repos");
+  const toggleTheme = document.createElement("button");
+  const themeSelector = document.getElementById("theme");
+  const experiencePopup = document.getElementById("experience-popup");
+  const experienceButton = document.getElementById("experience-button");
+  const closePopup = document.getElementById("close-popup");
+  const printableProjects = document.getElementById("printable-projects");
+  const printButton = document.getElementById("print-button");
+  const printableContent = document.getElementById("printable-content");
+  const blogContainer = document.getElementById("blog-articles");
 
-    repos
-      .filter(repo => !repo.private) // Filtra apenas repositórios públicos
-      .forEach(repo => {
-        if (!displayedRepos.has(repo.name)) { // Verifica se o repositório já foi exibido
+  // Fetch de repositórios e preenchimento geral
+  fetch(`https://api.github.com/users/${username}/repos`)
+    .then(response => response.json())
+    .then(repos => {
+      const publicRepos = repos.filter(repo => !repo.private);
+      const displayedRepos = new Set();
+
+      publicRepos.forEach(repo => {
+        if (!displayedRepos.has(repo.name)) {
           const repoElement = document.createElement("div");
           repoElement.className = "repo";
           repoElement.innerHTML = `
@@ -22,96 +34,104 @@ fetch(`https://api.github.com/users/${username}/repos`)
             <p><strong>Linguagem:</strong> ${repo.language || "Não especificada"}</p>
           `;
           reposContainer.appendChild(repoElement);
-          displayedRepos.add(repo.name); // Adiciona o repositório ao Set
+          displayedRepos.add(repo.name);
         }
       });
-  })
-  .catch(error => console.error("Erro ao buscar repositórios:", error));
 
-// Filtro de repositórios
-const searchInput = document.getElementById("search-repos");
-searchInput.addEventListener("input", (e) => {
-  const query = e.target.value.toLowerCase();
-  const repos = document.querySelectorAll(".repo"); // Certifique-se de que os repositórios têm a classe "repo"
-  
-  repos.forEach(repo => {
-    const repoName = repo.querySelector("h3").textContent.toLowerCase();
-    repo.style.display = repoName.includes(query) ? "block" : "none";
-  });
-});
+      populatePrintableProjects(publicRepos);
+    })
+    .catch(error => console.error("Erro ao buscar repositórios:", error));
 
-// Tema escuro/claro
-const toggleTheme = document.createElement("button");
-toggleTheme.textContent = "Alternar Tema";
-toggleTheme.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
-document.body.prepend(toggleTheme);
+  // Filtro de repositórios
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      const query = e.target.value.toLowerCase();
+      const repos = document.querySelectorAll(".repo");
 
-const themeSelector = document.getElementById("theme");
-
-themeSelector.addEventListener("change", (e) => {
-  const selectedTheme = e.target.value;
-  document.body.className = selectedTheme; // Define a classe do body como o tema selecionado
-});
-
-// Função para preencher os projetos no resumo
-function populatePrintableProjects(repos) {
-  const printableProjects = document.getElementById("printable-projects");
-  printableProjects.innerHTML = ""; // Limpa o conteúdo anterior
-
-  repos.forEach(repo => {
-    const projectElement = document.createElement("div");
-    projectElement.innerHTML = `
-      <h3>${repo.name}</h3>
-      <p>${repo.description || "Sem descrição"}</p>
-      <p><strong>Linguagem:</strong> ${repo.language || "Não especificada"}</p>
-    `;
-    printableProjects.appendChild(projectElement);
-  });
-}
-
-// Botão de impressão
-document.getElementById("print-button").addEventListener("click", () => {
-  const printableContent = document.getElementById("printable-content");
-  printableContent.style.display = "block"; // Torna o conteúdo visível para impressão
-  window.print();
-  printableContent.style.display = "none"; // Oculta novamente após a impressão
-});
-
-// Fetch de repositórios e preenchimento do resumo
-fetch(`https://api.github.com/users/${username}/repos`)
-  .then(response => response.json())
-  .then(repos => {
-    const publicRepos = repos.filter(repo => !repo.private); // Filtra apenas repositórios públicos
-    populatePrintableProjects(publicRepos); // Preenche os projetos no resumo
-  })
-  .catch(error => console.error("Erro ao buscar repositórios:", error));
-
-// Abrir e fechar o popup de Experiências Profissionais
-const experienceButton = document.getElementById("experience-button");
-const experiencePopup = document.getElementById("experience-popup");
-const closePopup = document.getElementById("close-popup");
-
-experienceButton.addEventListener("click", () => {
-  experiencePopup.style.display = "flex"; // Exibe o popup
-});
-
-closePopup.addEventListener("click", () => {
-  experiencePopup.style.display = "none"; // Oculta o popup
-});
-
-// Fechar o popup ao clicar fora do conteúdo
-window.addEventListener("click", (event) => {
-  if (event.target === experiencePopup) {
-    experiencePopup.style.display = "none";
+      repos.forEach(repo => {
+        const repoName = repo.querySelector("h3").textContent.toLowerCase();
+        repo.style.display = repoName.includes(query) ? "block" : "none";
+      });
+    });
   }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
-  const blogContainer = document.getElementById("blog-articles");
+  // Botão de alternar tema
+  toggleTheme.textContent = "Alternar Tema";
+  toggleTheme.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+  document.body.prepend(toggleTheme);
 
-  // Simulação de dados do blog (substitua pela URL da API ou feed RSS do blog)
+  // Seletor de tema com mudança de cores do popup
+  if (themeSelector) {
+    themeSelector.addEventListener("change", (e) => {
+      const selectedTheme = e.target.value;
+      document.body.className = selectedTheme;
+
+      if (experiencePopup) {
+        if (selectedTheme === 'dark') {
+          experiencePopup.style.color = '#FFFFFF';
+          experiencePopup.style.backgroundColor = '#000000';
+        } else if (selectedTheme === 'light') {
+          experiencePopup.style.color = '#000000';
+          experiencePopup.style.backgroundColor = '#FFFFFF';
+        } else if (selectedTheme === 'blue') {
+          experiencePopup.style.color = '#FFFFFF';
+          experiencePopup.style.backgroundColor = '#003366';
+        } else if (selectedTheme === 'green') {
+          experiencePopup.style.color = '#FFFFFF';
+          experiencePopup.style.backgroundColor = '#004d00';
+        } else {
+          experiencePopup.style.color = '';
+          experiencePopup.style.backgroundColor = '';
+        }
+      }
+    });
+  }
+
+  // Preencher os projetos na seção de impressão
+  function populatePrintableProjects(repos) {
+    if (!printableProjects) return;
+    printableProjects.innerHTML = "";
+
+    repos.forEach(repo => {
+      const projectElement = document.createElement("div");
+      projectElement.innerHTML = `
+        <h3>${repo.name}</h3>
+        <p>${repo.description || "Sem descrição"}</p>
+        <p><strong>Linguagem:</strong> ${repo.language || "Não especificada"}</p>
+      `;
+      printableProjects.appendChild(projectElement);
+    });
+  }
+
+  // Botão de impressão
+  if (printButton && printableContent) {
+    printButton.addEventListener("click", () => {
+      printableContent.style.display = "block";
+      window.print();
+      printableContent.style.display = "none";
+    });
+  }
+
+  // Abrir e fechar popup de experiência
+  if (experienceButton && experiencePopup && closePopup) {
+    experienceButton.addEventListener("click", () => {
+      experiencePopup.style.display = "flex";
+    });
+
+    closePopup.addEventListener("click", () => {
+      experiencePopup.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === experiencePopup) {
+        experiencePopup.style.display = "none";
+      }
+    });
+  }
+
+  // Dados do blog simulados
   const blogArticles = [
     {
       title: "O Impacto da Inteligência Artificial no QA",
@@ -130,15 +150,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // Renderizar os artigos no HTML
-  blogArticles.forEach(article => {
-    const articleElement = document.createElement("div");
-    articleElement.classList.add("blog-article");
-    articleElement.innerHTML = `
-      <h3>${article.title}</h3>
-      <p>${article.description}</p>
-      <a href="${article.link}" target="_blank" class="button">Leia mais</a>
-    `;
-    blogContainer.appendChild(articleElement);
-  });
+  if (blogContainer) {
+    blogArticles.forEach(article => {
+      const articleElement = document.createElement("div");
+      articleElement.classList.add("blog-article");
+      articleElement.innerHTML = `
+        <h3>${article.title}</h3>
+        <p>${article.description}</p>
+        <a href="${article.link}" target="_blank" class="button">Leia mais</a>
+      `;
+      blogContainer.appendChild(articleElement);
+    });
+  }
 });
