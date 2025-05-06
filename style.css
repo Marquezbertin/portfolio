@@ -583,3 +583,52 @@ html {
 .project-links a:hover {
   background: var(--primary-hover, #3557DB);
 }
+
+/* Seção do blog com melhor contraste */
+[data-theme='light'] .blog-article,
+body.light .blog-article {
+    background: #ffffff;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+}
+
+[data-theme='light'] .blog-article h2,
+body.light .blog-article h2 {
+    color: #222222;
+    font-weight: 600;
+}
+
+[data-theme='light'] .blog-article p,
+body.light .blog-article p {
+    color: #333333;
+}
+
+[data-theme='light'] .blog-article .leia-mais,
+body.light .blog-article .leia-mais {
+    background: var(--primary-color);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+[data-theme='light'] .blog-article strong,
+body.light .blog-article strong {
+    color: #222222;
+    font-weight: 600;
+}
+
+/* Melhorar contraste dos depoimentos no tema claro */
+[data-theme='light'] #testimonials,
+body.light #testimonials {
+    color: #333333;
+}
+
+[data-theme='light'] #testimonials blockquote,
+body.light #testimonials blockquote {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    color: #333333;
+}
