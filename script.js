@@ -14,33 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const blogContainer = document.getElementById("blog-articles");
 
   // Fetch de repositórios e preenchimento geral
-  fetch(`https://api.github.com/users/${username}/repos`)
-    .then(response => response.json())
-    .then(repos => {
-      const publicRepos = repos.filter(repo => !repo.private);
-      const displayedRepos = new Set();
-
-      publicRepos.forEach(repo => {
-        if (!displayedRepos.has(repo.name)) {
-          const repoElement = document.createElement("div");
-          repoElement.className = "repo";
-          repoElement.innerHTML = `
-            <h3>
-              <a href="${repo.html_url}" target="_blank" aria-label="Abrir repositório ${repo.name}">
-                ${repo.name}
-              </a>
-            </h3>
-            <p>${repo.description || "Sem descrição"}</p>
-            <p><strong>Linguagem:</strong> ${repo.language || "Não especificada"}</p>
-          `;
-          reposContainer.appendChild(repoElement);
-          displayedRepos.add(repo.name);
-        }
-      });
-
-      populatePrintableProjects(publicRepos);
-    })
-    .catch(error => console.error("Erro ao buscar repositórios:", error));
+  fetchGitHubRepos();
 
   // Filtro de repositórios
   if (searchInput) {
@@ -172,3 +146,32 @@ function setTheme(theme) {
 // Recuperar tema salvo
 const savedTheme = localStorage.getItem('theme') || 'default';
 document.body.className = savedTheme;
+
+async function fetchGitHubRepos() {
+  try {
+    const response = await fetch('https://api.github.com/users/Marquezbertin/repos');
+    const repos = await response.json();
+    
+    const reposContainer = document.getElementById('repos-container');
+    const reposList = document.createElement('div');
+    reposList.className = 'repos-list';
+    
+    repos.forEach(repo => {
+        const repoElement = document.createElement('div');
+        repoElement.className = 'repo-card';
+        repoElement.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || 'Sem descrição disponível'}</p>
+            <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
+        `;
+        reposList.appendChild(repoElement);
+    });
+    
+    // Adiciona após o campo de busca
+    const searchInput = document.getElementById('search-repos');
+    searchInput.insertAdjacentElement('afterend', reposList);
+    
+  } catch (error) {
+    console.error('Erro ao carregar repositórios:', error);
+  }
+}
