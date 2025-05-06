@@ -175,3 +175,30 @@ async function fetchGitHubRepos() {
     console.error('Erro ao carregar repositórios:', error);
   }
 }
+
+async function loadGitHubProjects() {
+  try {
+    const response = await fetch('https://api.github.com/users/Marquezbertin/repos');
+    const projects = await response.json();
+    
+    const projectsGrid = document.querySelector('.projects-grid');
+    projectsGrid.innerHTML = ''; // Limpa o conteúdo existente
+    
+    projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.innerHTML = `
+        <h3>${project.name}</h3>
+        <p>${project.description || 'Sem descrição disponível'}</p>
+        <div class="project-links">
+          <a href="${project.html_url}" target="_blank">GitHub</a>
+        </div>
+      `;
+      projectsGrid.appendChild(card);
+    });
+  } catch (error) {
+    console.error('Erro ao carregar projetos:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadGitHubProjects);
