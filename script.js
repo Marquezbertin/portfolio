@@ -149,23 +149,14 @@ document.body.className = savedTheme;
 
 async function fetchGitHubRepos() {
     try {
-        const response = await fetch('https://api.github.com/users/Marquezbertin/repos', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            mode: 'cors'
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
+        const response = await fetch('https://api.github.com/users/Marquezbertin/repos');
         const repos = await response.json();
         const projectsGrid = document.querySelector('.projects-grid');
         
+        // Limpa o conteúdo existente
         projectsGrid.innerHTML = '';
         
+        // Renderiza os repositórios
         repos.forEach(repo => {
             const card = document.createElement('div');
             card.className = 'project-card';
@@ -173,11 +164,27 @@ async function fetchGitHubRepos() {
                 <h3>${repo.name}</h3>
                 <p>${repo.description || 'Sem descrição disponível'}</p>
                 <div class="project-links">
-                    <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+                    <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
                 </div>
             `;
             projectsGrid.appendChild(card);
         });
+
+        // Implementa a funcionalidade de busca
+        const searchInput = document.getElementById('search-repos');
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.project-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+                
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+
     } catch (error) {
         console.error('Erro ao carregar repositórios:', error);
         document.getElementById('repos-container').innerHTML = 
@@ -185,5 +192,5 @@ async function fetchGitHubRepos() {
     }
 }
 
-// Carrega os repositórios quando a página é carregada
+// Inicializa a busca de repositórios quando a página carrega
 document.addEventListener('DOMContentLoaded', fetchGitHubRepos);
