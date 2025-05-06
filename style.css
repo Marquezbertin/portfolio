@@ -524,31 +524,41 @@ html {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 1rem;
+  margin: 2rem 0;
 }
 
 .project-card {
-  background: var(--card-bg, #ffffff);
+  background: var(--card-bg, #2a2a2a);
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
 }
 
 .project-card h3 {
-  color: var(--heading-color);
+  color: var(--text-color);
   margin-bottom: 1rem;
 }
 
-.project-links {
-  margin-top: 1rem;
+.project-card p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
 }
 
 .project-links a {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: var(--primary-color);
+  background: var(--primary-color, #4A6FFF);
   color: white;
   text-decoration: none;
   border-radius: 4px;
-  margin-right: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.project-links a:hover {
+  background: var(--primary-hover, #3557DB);
 }
