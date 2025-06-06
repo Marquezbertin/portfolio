@@ -152,6 +152,13 @@ const savedTheme = localStorage.getItem("theme") || "default";
 document.body.className = savedTheme;
 
 function fetchGitHubRepos() {
+  const selectedRepos = [
+    "QualityHub",
+    "art-of-software-testing",
+    "listadetarefas_qualityAssurance",
+    "formacaoScrumMaster",
+  ];
+
   fetch("https://api.github.com/users/Marquezbertin/repos")
     .then((response) => {
       if (!response.ok) {
@@ -162,7 +169,11 @@ function fetchGitHubRepos() {
     .then((data) => {
       const reposContainer = document.getElementById("repos-container");
       if (reposContainer) {
-        reposContainer.innerHTML = data
+        const filteredRepos = data.filter((repo) =>
+          selectedRepos.includes(repo.name)
+        );
+
+        reposContainer.innerHTML = filteredRepos
           .map(
             (repo) => `
           <div>
