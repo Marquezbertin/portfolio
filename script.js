@@ -13,8 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const printableContent = document.getElementById("printable-content");
   const blogContainer = document.getElementById("blog-articles");
 
-  // Fetch de repositórios e preenchimento geral
-  fetchGitHubRepos();
+  // Verifica se o elemento existe antes de executar a lógica
+  if (reposContainer) {
+    fetchGitHubRepos();
+  } else {
+    console.error("Elemento #repos-container não encontrado.");
+  }
 
   // Filtro de repositórios
   if (searchInput) {
@@ -22,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const query = e.target.value.toLowerCase();
       const repos = document.querySelectorAll(".repo");
 
-      repos.forEach(repo => {
+      repos.forEach((repo) => {
         const repoName = repo.querySelector("h3").textContent.toLowerCase();
         repo.style.display = repoName.includes(query) ? "block" : "none";
       });
@@ -43,21 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
       setTheme(selectedTheme);
 
       if (experiencePopup) {
-        if (selectedTheme === 'dark') {
-          experiencePopup.style.color = '#FFFFFF';
-          experiencePopup.style.backgroundColor = '#000000';
-        } else if (selectedTheme === 'light') {
-          experiencePopup.style.color = '#000000';
-          experiencePopup.style.backgroundColor = '#FFFFFF';
-        } else if (selectedTheme === 'blue') {
-          experiencePopup.style.color = '#FFFFFF';
-          experiencePopup.style.backgroundColor = '#003366';
-        } else if (selectedTheme === 'green') {
-          experiencePopup.style.color = '#FFFFFF';
-          experiencePopup.style.backgroundColor = '#004d00';
+        if (selectedTheme === "dark") {
+          experiencePopup.style.color = "#FFFFFF";
+          experiencePopup.style.backgroundColor = "#000000";
+        } else if (selectedTheme === "light") {
+          experiencePopup.style.color = "#000000";
+          experiencePopup.style.backgroundColor = "#FFFFFF";
+        } else if (selectedTheme === "blue") {
+          experiencePopup.style.color = "#FFFFFF";
+          experiencePopup.style.backgroundColor = "#003366";
+        } else if (selectedTheme === "green") {
+          experiencePopup.style.color = "#FFFFFF";
+          experiencePopup.style.backgroundColor = "#004d00";
         } else {
-          experiencePopup.style.color = '';
-          experiencePopup.style.backgroundColor = '';
+          experiencePopup.style.color = "";
+          experiencePopup.style.backgroundColor = "";
         }
       }
     });
@@ -68,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!printableProjects) return;
     printableProjects.innerHTML = "";
 
-    repos.forEach(repo => {
+    repos.forEach((repo) => {
       const projectElement = document.createElement("div");
       projectElement.innerHTML = `
         <h3>${repo.name}</h3>
@@ -110,22 +114,22 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "O Impacto da Inteligência Artificial no QA",
       description: "Descubra como a IA está transformando o mundo do Quality Assurance.",
-      link: "https://www.despertarqa.net/post/despertar-para-qualidade-de-software-o-impacto-da-intelig%C3%AAncia-artificial-ia-em-qa"
+      link: "https://www.despertarqa.net/post/despertar-para-qualidade-de-software-o-impacto-da-intelig%C3%AAncia-artificial-ia-em-qa",
     },
     {
       title: "Star Wars e QA: Lições de Qualidade de Software",
       description: "Uma abordagem criativa para entender os princípios do QA através do universo Star Wars.",
-      link: "https://www.despertarqa.net/post/principais-desafios-na-carreira-de-um-qa-um-olhar-atrav%C3%A9s-da-lente-de-the-acolyte-star-wars"
+      link: "https://www.despertarqa.net/post/principais-desafios-na-carreira-de-um-qa-um-olhar-atrav%C3%A9s-da-lente-de-the-acolyte-star-wars",
     },
     {
       title: "Ferramentas Essenciais para Automação de Testes",
       description: "Conheça as ferramentas indispensáveis para profissionais de QA.",
-      link: "https://www.despertarqa.net/post/analisar-e-corrigir-gargalos-a-jornada-dos-jedis-da-qualidade-de-software"
-    }
+      link: "https://www.despertarqa.net/post/analisar-e-corrigir-gargalos-a-jornada-dos-jedis-da-qualidade-de-software",
+    },
   ];
 
   if (blogContainer) {
-    blogArticles.forEach(article => {
+    blogArticles.forEach((article) => {
       const articleElement = document.createElement("div");
       articleElement.classList.add("blog-article");
       articleElement.innerHTML = `
@@ -139,58 +143,44 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function setTheme(theme) {
-  localStorage.setItem('theme', theme);
+  localStorage.setItem("theme", theme);
   document.body.className = theme;
 }
 
 // Recuperar tema salvo
-const savedTheme = localStorage.getItem('theme') || 'default';
+const savedTheme = localStorage.getItem("theme") || "default";
 document.body.className = savedTheme;
 
-async function fetchGitHubRepos() {
-    try {
-        const response = await fetch('https://api.github.com/users/Marquezbertin/repos');
-        const repos = await response.json();
-        const projectsGrid = document.querySelector('.projects-grid');
-        
-        // Limpa o conteúdo existente
-        projectsGrid.innerHTML = '';
-        
-        // Renderiza os repositórios
-        repos.forEach(repo => {
-            const card = document.createElement('div');
-            card.className = 'project-card';
-            card.innerHTML = `
-                <h3>${repo.name}</h3>
-                <p>${repo.description || 'Sem descrição disponível'}</p>
-                <div class="project-links">
-                    <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
-                </div>
-            `;
-            projectsGrid.appendChild(card);
-        });
-
-        // Implementa a funcionalidade de busca
-        const searchInput = document.getElementById('search-repos');
-        searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const cards = document.querySelectorAll('.project-card');
-            
-            cards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const description = card.querySelector('p').textContent.toLowerCase();
-                const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
-                
-                card.style.display = isVisible ? 'block' : 'none';
-            });
-        });
-
-    } catch (error) {
-        console.error('Erro ao carregar repositórios:', error);
-        document.getElementById('repos-container').innerHTML = 
-            '<p class="error">Erro ao carregar os repositórios. Por favor, tente novamente mais tarde.</p>';
-    }
+function fetchGitHubRepos() {
+  fetch("https://api.github.com/users/Marquezbertin/repos")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao carregar repositórios.");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const reposContainer = document.getElementById("repos-container");
+      if (reposContainer) {
+        reposContainer.innerHTML = data
+          .map(
+            (repo) => `
+          <div>
+            <h3>${repo.name}</h3>
+            <p>${repo.description || "Sem descrição disponível."}</p>
+            <a href="${repo.html_url}" target="_blank">Ver no GitHub</a>
+          </div>
+        `
+          )
+          .join("");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      const reposContainer = document.getElementById("repos-container");
+      if (reposContainer) {
+        reposContainer.innerHTML =
+          "<p>Erro ao carregar os repositórios. Por favor, tente novamente mais tarde.</p>";
+      }
+    });
 }
-
-// Inicializa a busca de repositórios quando a página carrega
-document.addEventListener('DOMContentLoaded', fetchGitHubRepos);
