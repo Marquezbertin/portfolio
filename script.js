@@ -195,3 +195,12 @@ function fetchGitHubRepos() {
       }
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reposContainer = document.getElementById("repos-container");
+  if (reposContainer) {
+    fetchGitHubRepos();
+  } else {
+    console.error("Elemento #repos-container não encontrado.");
+  }
+});
