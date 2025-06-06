@@ -1,85 +1,115 @@
-/* Estilo geral */
-body {
-  font-family: 'Poppins', sans-serif;
+/* Variáveis globais */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #0056b3;
+  --background-color: #f9f9f9;
+  --text-color: #333;
+  --heading-color: #222;
+  --card-bg: #fff;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --spacing: 20px;
+  --max-width: 1200px;
+}
+
+/* Reset básico */
+* {
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
 h1, h2, h3 {
-  color: #222;
-  margin-bottom: 10px;
+  color: var(--heading-color);
+  margin-bottom: var(--spacing);
 }
 
 p {
-  line-height: 1.6;
-  margin-bottom: 15px;
+  margin-bottom: var(--spacing);
 }
 
-/* Layout das seções */
+/* Layout geral */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing);
+}
+
 section {
   padding: 40px 20px;
   margin: 20px auto;
-  max-width: 1200px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
 }
 
 section h2 {
   text-align: center;
-  font-size: 1.8em;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: var(--spacing);
 }
 
 /* Grid de projetos */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: var(--spacing);
 }
 
 .projects-grid div {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fdfdfd;
+  padding: var(--spacing);
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projects-grid div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .projects-grid h3 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing);
 }
 
 .projects-grid a {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: var(--spacing);
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
 }
 
 .projects-grid a:hover {
-  background-color: #0056b3;
+  background-color: var(--secondary-color);
 }
 
 /* Blog e depoimentos */
 #blog-articles .blog-article,
 blockquote {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fdfdfd;
-  margin-bottom: 20px;
+  padding: var(--spacing);
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  margin-bottom: var(--spacing);
 }
 
 blockquote {
   font-style: italic;
-  border-left: 4px solid #007bff;
+  border-left: 4px solid var(--primary-color);
 }
 
 /* Popup */
@@ -96,9 +126,9 @@ blockquote {
 }
 
 .popup-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
+  background-color: var(--card-bg);
+  padding: var(--spacing);
+  border-radius: var(--border-radius);
   max-width: 600px;
   text-align: center;
 }
@@ -107,7 +137,7 @@ blockquote {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
@@ -115,22 +145,23 @@ blockquote {
 .button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: var(--secondary-color);
 }
 
 /* Rodapé */
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #222;
+  background-color: var(--heading-color);
   color: #fff;
 }
 
