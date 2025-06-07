@@ -159,10 +159,14 @@ function fetchGitHubRepos() {
     "formacaoScrumMaster",
   ];
 
-  fetch("https://api.github.com/users/Marquezbertin/repos")
+  fetch("https://api.github.com/users/Marquezbertin/repos", {
+    headers: {
+      Authorization: `token ${process.env.GITHUB_TOKEN}`, // Certifique-se de que o token está correto
+    },
+  })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Erro ao carregar repositórios.");
+        throw new Error(`Erro ao carregar repositórios: ${response.status}`);
       }
       return response.json();
     })
