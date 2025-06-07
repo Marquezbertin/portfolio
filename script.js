@@ -200,11 +200,14 @@ function fetchGitHubRepos() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const reposContainer = document.getElementById("repos-container");
-  if (reposContainer) {
-    fetchGitHubRepos();
-  } else {
-    console.error("Elemento #repos-container não encontrado.");
-  }
+// Adiciona funcionalidade ao botão de experiências profissionais
+document.getElementById('experience-button').addEventListener('click', function () {
+  const popup = document.getElementById('experience-popup');
+  popup.style.display = 'block';
+});
+
+// Adiciona funcionalidade ao botão de fechar o popup
+document.getElementById('close-popup').addEventListener('click', function () {
+  const popup = document.getElementById('experience-popup');
+  popup.style.display = 'none';
 });
