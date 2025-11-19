@@ -20,7 +20,8 @@
                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                  img-src 'self' data: https:;
                  font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
-                 connect-src 'self' https://api.github.com;">
+                 connect-src 'self' https://api.github.com;
+                 frame-src 'self' https://www.strava.com https://chelso.com.br;">
   <title>Portfólio - Bruno Bertin | Quality Assurance</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
@@ -44,6 +45,7 @@
       <li><a href="#repos-container">Projetos</a></li>
       <li><a href="#contato">Contato</a></li>
       <li><button id="experience-button">Experiências Profissionais</button></li>
+      <li><a href="#corrida">Meu Hobby</a></li>
     </ul>
   </nav>
 
@@ -277,6 +279,40 @@
           <a href="https://github.com/Marquezbertin/art-of-software-testing" target="_blank">Ver no GitHub</a>
         </div>
       </div>
+    </section>
+
+    <!-- Seção adicionada: Corrida de Rua -->
+    <section id="corrida" aria-label="Corrida de Rua">
+      <h2>Corrida de Rua</h2>
+      <p>Meu hobby é corrida de rua. Aqui compartilho resultados e um resumo das atividades via Strava. Se os widgets não carregarem, use o link para o perfil.</p>
+      <div class="strava-widgets" style="display:flex;gap:16px;flex-wrap:wrap;">
+        <iframe height="454" width="300" frameborder="0" allowtransparency="true" scrolling="no" loading="lazy"
+          src="https://www.strava.com/athletes/137173728/latest-rides/97cbf50ce4474d0cfa0bc7306e69f169c8f3002a" 
+          title="Atividades recentes no Strava"></iframe>
+        <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" loading="lazy"
+          src="https://www.strava.com/athletes/137173728/activity-summary/97cbf50ce4474d0cfa0bc7306e69f169c8f3002a" 
+          title="Resumo de atividades no Strava"></iframe>
+      </div>
+
+      <!-- Iframes das últimas duas provas (Chelso) -->
+      <div class="race-results" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;">
+        <iframe src="https://chelso.com.br/resultados/#/9-corrida-sao-vicente-uacai-night-run/6631"
+                title="Resultado - São Vicente Uacai Night Run"
+                width="300" height="500" frameborder="0" loading="lazy" allowtransparency="true" scrolling="auto"></iframe>
+
+        <iframe src="https://chelso.com.br/resultados/#/11-corrida-sao-vicente-do-alvinegro/2130"
+                title="Resultado - São Vicente do Alvinegro"
+                width="300" height="500" frameborder="0" loading="lazy" allowtransparency="true" scrolling="auto"></iframe>
+      </div>
+
+      <div class="hobby-note" style="margin-top:12px;">
+        <h3>Meu hobby</h3>
+        <div contenteditable="true" aria-label="Descrição sobre corrida" class="editable-note card" data-placeholder="Escreva aqui sobre seus treinos, objetivos e resultados.">
+          A corrida de rua se tornou muito mais do que um exercício físico: é meu momento de liberdade, foco e superação. Cada treino traz uma sensação única de progresso, seja mantendo um pace confortável ou enfrentando percursos desafiadores. Correr me conecta comigo mesmo, fortalece o corpo e acalma a mente. É um hobby que transforma dias comuns em pequenas conquistas — passo após passo.
+        </div>
+      </div>
+      <p style="margin-top:8px;"><a href="https://www.strava.com/athletes/137173728" target="_blank" rel="noopener">Ver meu perfil no Strava</a></p>
+      <p style="font-size:0.9em;color:#666;">Observação: se o Strava ou o site de resultados bloquearem embeds via X-Frame-Options, os iframes podem não aparecer — use os links diretos.</p>
     </section>
   </main>
   <footer>
