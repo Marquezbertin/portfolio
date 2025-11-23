@@ -6,14 +6,21 @@
   <meta name="description" content="Portfólio de Bruno Bertin, especialista em Quality Assurance com experiência em automação de testes e gestão de qualidade de software.">
   <meta name="keywords" content="Quality Assurance, QA, Automação de Testes, Robot Framework, Playwright, Selenium, Cypress, Pytest, Postman, Gestão de Qualidade, Portfólio QA">
   <meta name="author" content="Bruno Bertin">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Portfólio - Bruno Bertin | Quality Assurance">
   <meta property="og:description" content="Conheça o portfólio de Bruno Bertin, especialista em QA com experiência em automação de testes e gestão de qualidade de software.">
-  <meta property="og:image" content="avatar.jpeg">
+  <meta property="og:image" content="https://marquezbertin.github.io/portfolio/avatar.jpeg">
   <meta property="og:url" content="https://marquezbertin.github.io/portfolio/">
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Portfólio - Bruno Bertin | Quality Assurance">
   <meta name="twitter:description" content="Conheça o portfólio de Bruno Bertin, especialista em QA com experiência em automação de testes e gestão de qualidade de software.">
-  <meta name="twitter:image" content="avatar.jpeg">
+  <meta name="twitter:image" content="https://marquezbertin.github.io/portfolio/avatar.jpeg">
+  
+  <!-- Security -->
   <meta http-equiv="Content-Security-Policy" 
         content="default-src 'self' https://api.github.com;
                  script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
@@ -22,9 +29,17 @@
                  font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com;
                  connect-src 'self' https://api.github.com;
                  frame-src 'self' https://www.strava.com https://chelso.com.br;">
+  
   <title>Portfólio - Bruno Bertin | Quality Assurance</title>
+  
+  <!-- Preconnect para Google Fonts (Performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,39 +47,51 @@
     "name": "Bruno Bertin",
     "jobTitle": "Quality Assurance Specialist",
     "url": "https://marquezbertin.github.io/portfolio/",
+    "image": "https://marquezbertin.github.io/portfolio/avatar.jpeg",
     "sameAs": [
       "https://github.com/Marquezbertin",
       "https://www.linkedin.com/in/bruno-bertin"
-    ]
+    ],
+    "knowsAbout": ["Quality Assurance", "Test Automation", "Robot Framework", "Playwright", "Selenium", "Cypress"]
   }
   </script>
+  
+  <style>
+    /* Estilos inline críticos para evitar FOUC */
+    body { margin: 0; font-family: 'Poppins', sans-serif; }
+    nav { position: sticky; top: 0; z-index: 100; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .avatar { border-radius: 50%; }
+  </style>
 </head>
 <body>
   <nav aria-label="Navegação principal">
     <ul>
       <li><a href="#repos-container">Projetos</a></li>
       <li><a href="#contato">Contato</a></li>
-      <li><button id="experience-button">Experiências Profissionais</button></li>
+      <li><a href="#experience" id="experience-button">Experiências</a></li>
       <li><a href="#corrida">Meu Hobby</a></li>
     </ul>
   </nav>
 
-  <!-- Popup para Experiências Profissionais -->
-  <div id="experience-popup" class="popup" style="display: none;">
+  <!-- Modal para Experiências Profissionais -->
+  <div id="experience-popup" class="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" style="display: none;">
     <div class="popup-content">
-      <span id="close-popup" class="close-button">&times;</span>
-      <h1>Resumo do Portfólio</h1>
-      <h2>Mini Currículo</h2>
+      <button id="close-popup" class="close-button" aria-label="Fechar modal">&times;</button>
+      <h2 id="popup-title">Resumo do Portfólio</h2>
+      
+      <h3>Mini Currículo</h3>
       <p>
         Sou Bruno Bertin, especialista em Quality Assurance com experiência em ferramentas como Robot Framework, Playwright, Selenium WebDriver, Cypress, Postman e Pytest. 
         Desde 2016, venho trilhando uma jornada no universo da tecnologia, com foco em testes funcionais e não funcionais, automação de testes e gestão de qualidade de software.
       </p>
-      <h2>Experiência</h2>
+      
+      <h3>Experiência Profissional</h3>
       <ul>
-        <li><strong>Exato Digital</strong> - Analista de Testes Pleno (set/2024 - presente)
+        <li>
+          <strong>Exato Digital</strong> - Analista de Testes Pleno (set/2024 - presente)
           <ul>
-            <li>Reduzi o tempo de execução de testes automatizados em 30%.</li>
-            <li>Implementei uma nova estrutura de testes com Playwright, aumentando a cobertura de testes em 20%.</li>
+            <li>Reduzi o tempo de execução de testes automatizados em 30%</li>
+            <li>Implementei uma nova estrutura de testes com Playwright, aumentando a cobertura em 20%</li>
           </ul>
         </li>
         <li><strong>BBM Technology and Marketing</strong> - Analista Técnico Qualidade de Software (jan/2019 - set/2024)</li>
@@ -78,246 +105,389 @@
 
   <header>
     <div class="header-content">
-      <img src="avatar.jpeg" alt="Foto de Bruno Bertin Marquez" class="avatar" loading="lazy">
+      <img src="avatar.jpeg" 
+           alt="Bruno Bertin Marquez - Especialista em Quality Assurance" 
+           class="avatar" 
+           width="150" 
+           height="150"
+           loading="eager">
       <h1>Bruno Bertin</h1>
-      <p>Quality Assurance | Apaixonado por tecnologia e inovação</p>
+      <p class="subtitle">Quality Assurance | Apaixonado por tecnologia e inovação</p>
       <div class="social-links">
-        <a href="https://github.com/Marquezbertin" target="_blank" aria-label="GitHub de Bruno Bertin">GitHub</a>
-        <a href="https://www.linkedin.com/in/bruno-bertin" target="_blank" aria-label="LinkedIn de Bruno Bertin">LinkedIn</a>
+        <a href="https://github.com/Marquezbertin" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="GitHub de Bruno Bertin (abre em nova aba)">
+          <span aria-hidden="true">🔗</span> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/bruno-bertin" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="LinkedIn de Bruno Bertin (abre em nova aba)">
+          <span aria-hidden="true">💼</span> LinkedIn
+        </a>
       </div>
     </div>
   </header>
+
   <main>
-    <section id="about-me" aria-label="Sobre mim">
-      <h2>Sobre Mim</h2>
-      <p>
-        Sou Bruno Bertin, um especialista em Quality Assurance com experiência em ferramentas como Robot Framework, Playwright, Selenium WebDriver, Cypress, Postman e Pytest. 
-        Desde 2016, venho trilhando uma jornada no universo da tecnologia, com foco em testes funcionais e não funcionais, automação de testes e gestão de qualidade de software.
-      </p>
-      <p>
-        Sou um especialista em Quality Assurance com mais de 8 anos de experiência, ajudando empresas a entregar software de alta qualidade. 
-        Minha paixão é criar soluções de automação que economizam tempo e garantem excelência.
-      </p>
-      <p>
-        Conclui em junho de 2025, minha Pós Graduação - MBA em Gestão de Qualidade de Software e possuo graduações em Comunicação e Internet das Coisas. 
-        Minha experiência inclui atuação em empresas como SmartLoad, AT&M Alta Tecnologia, Eunerd, e atualmente atuo como QA Pleno na empresa Exato Digital, além de projetos freelance em plataformas como Tester Work e Crowdtest.
-      </p>
-      <p>
-        Estou sempre em busca de novos desafios e oportunidades para aplicar meus conhecimentos e contribuir para o sucesso de projetos inovadores. 
-        Acredito que a qualidade é um pilar fundamental no desenvolvimento de software e estou comprometido em garantir que cada produto atenda aos mais altos padrões!
-      </p>
+    <section id="about-me" aria-labelledby="about-heading">
+      <h2 id="about-heading">Sobre Mim</h2>
+      
+      <div class="about-intro">
+        <p class="highlight">
+          Sou especialista em Quality Assurance com mais de 8 anos de experiência, ajudando empresas a entregar software de alta qualidade com foco em automação de testes e gestão de qualidade.
+        </p>
+      </div>
+
+      <div class="about-details">
+        <h3>Minha Jornada</h3>
+        <p>
+          Desde 2016, venho trilhando uma jornada no universo da tecnologia com experiência em ferramentas como <strong>Robot Framework</strong>, <strong>Playwright</strong>, <strong>Selenium WebDriver</strong>, <strong>Cypress</strong>, <strong>Postman</strong> e <strong>Pytest</strong>, focando em testes funcionais e não funcionais.
+        </p>
+
+        <h3>Formação</h3>
+        <p>
+          Concluí em junho de 2025 minha Pós-Graduação - MBA em Gestão de Qualidade de Software e possuo graduações em Comunicação e Internet das Coisas.
+        </p>
+
+        <h3>Experiência Atual</h3>
+        <p>
+          Atualmente atuo como QA Pleno na <strong>Exato Digital</strong>, além de projetos freelance em plataformas como Tester Work e Crowdtest. Minha experiência inclui atuação em empresas como SmartLoad, AT&M Alta Tecnologia e Eunerd.
+        </p>
+
+        <p class="mission">
+          Estou sempre em busca de novos desafios e oportunidades para aplicar meus conhecimentos. Acredito que a qualidade é um pilar fundamental no desenvolvimento de software e estou comprometido em garantir que cada produto atenda aos mais altos padrões!
+        </p>
+      </div>
     </section>
 
-    <section id="repos-container">
-      <h2>Meus Principais Projetos</h2>
+    <section id="repos-container" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Meus Principais Projetos</h2>
       <div class="projects-grid">
-        <div>
+        <article class="project-card">
           <h3>QualityHub</h3>
           <p>Um hub centralizado para gerenciar e monitorar a qualidade de software em projetos.</p>
-          <a href="https://github.com/Marquezbertin/QualityHub" target="_blank">Ver no GitHub</a>
-        </div>
-        <div>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Quality Management</span>
+          </div>
+          <a href="https://github.com/Marquezbertin/QualityHub" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="project-link">
+            Ver no GitHub →
+          </a>
+        </article>
+
+        <article class="project-card">
           <h3>The Art of Software Testing</h3>
           <p>Implementação prática dos exemplos do livro "The Art of Software Testing".</p>
-          <a href="https://github.com/Marquezbertin/art-of-software-testing" target="_blank">Ver no GitHub</a>
-        </div>
-        <div>
+          <div class="project-tags">
+            <span class="tag">Testing</span>
+            <span class="tag">Best Practices</span>
+          </div>
+          <a href="https://github.com/Marquezbertin/art-of-software-testing" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="project-link">
+            Ver no GitHub →
+          </a>
+        </article>
+
+        <article class="project-card">
           <h3>QAAutoFramework</h3>
-          <p>Este projeto é um framework de testes automatizados que permite testar aplicações Web e APIs, com suporte a geração de relatórios detalhados.</p>
-          <a href="https://github.com/Marquezbertin/qa-automation-framework" target="_blank">Ver no GitHub</a>
-        </div>
-        <div>
+          <p>Framework de testes automatizados para aplicações Web e APIs, com suporte a geração de relatórios detalhados.</p>
+          <div class="project-tags">
+            <span class="tag">Automation</span>
+            <span class="tag">Web & API</span>
+          </div>
+          <a href="https://github.com/Marquezbertin/qa-automation-framework" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="project-link">
+            Ver no GitHub →
+          </a>
+        </article>
+
+        <article class="project-card">
           <h3>Lista de Tarefas Quality Assurance</h3>
           <p>Aplicação para gerenciar tarefas com foco em práticas de QA.</p>
-          <a href="https://github.com/Marquezbertin/listadetarefas_qualityAssurance" target="_blank">Ver no GitHub</a>
-        </div>
-        <div>
+          <div class="project-tags">
+            <span class="tag">Task Management</span>
+            <span class="tag">QA Workflow</span>
+          </div>
+          <a href="https://github.com/Marquezbertin/listadetarefas_qualityAssurance" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="project-link">
+            Ver no GitHub →
+          </a>
+        </article>
+
+        <article class="project-card">
           <h3>Formação Scrum Master</h3>
-          <p>Repositório com Casos de Estuso sobre apilcação do framework.</p>
-          <a href="https://github.com/Marquezbertin/formacaoScrumMaster" target="_blank">Ver no GitHub</a>
-        </div>
+          <p>Repositório com Casos de Estudo sobre aplicação do framework Scrum.</p>
+          <div class="project-tags">
+            <span class="tag">Scrum</span>
+            <span class="tag">Agile</span>
+          </div>
+          <a href="https://github.com/Marquezbertin/formacaoScrumMaster" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="project-link">
+            Ver no GitHub →
+          </a>
+        </article>
       </div>
     </section>
 
-    <section id="blog" aria-label="Blog O Despertar QA">
-      <h2>O Despertar QA</h2>
-      <p style="text-align: justify;">
+    <section id="blog" aria-labelledby="blog-heading">
+      <h2 id="blog-heading">O Despertar QA</h2>
+      <p class="blog-intro">
         O blog <strong>Despertar QA</strong> é uma plataforma dedicada à excelência em qualidade de software, combinando conhecimento técnico com uma abordagem envolvente e criativa.
       </p>
-      <div id="blog-articles">
-        <!-- Os artigos serão carregados dinamicamente pelo JavaScript -->
+      <div id="blog-articles" role="feed" aria-busy="true">
+        <p class="loading-message">Carregando artigos...</p>
       </div>
-      <a href="https://www.despertarqa.net/" target="_blank" class="button" aria-label="Visitar o blog O Despertar QA">Visitar Blog</a>
+      <a href="https://www.despertarqa.net/" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         class="button" 
+         aria-label="Visitar o blog O Despertar QA (abre em nova aba)">
+        Visitar Blog
+      </a>
     </section>
 
-    <section id="testimonials">
-      <h2>Depoimentos</h2>
-      <blockquote>
-        "Além de um grande profissional muito empenhado, é um grande amigo com um coração enorme. Capaz de lidar com as pessoas de tal maneira que mantém o time unido e feliz. Consegue resolver conflitos e ajudar clientes em situação crítica." - Geandro Oliveira Analista de Sistema - Supervisor de 2016 á 2018 na AT&M Alta Tecnologia
+    <section id="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">Depoimentos</h2>
+      <blockquote cite="https://www.linkedin.com/in/bruno-bertin/">
+        <p>
+          "Além de um grande profissional muito empenhado, é um grande amigo com um coração enorme. Capaz de lidar com as pessoas de tal maneira que mantém o time unido e feliz. Consegue resolver conflitos e ajudar clientes em situação crítica."
+        </p>
+        <footer>
+          — <cite>Geandro Oliveira</cite>, Analista de Sistema - Supervisor de 2016 a 2018 na AT&M Alta Tecnologia
+        </footer>
       </blockquote>
       <a href="https://www.linkedin.com/in/bruno-bertin/" 
          target="_blank" 
+         rel="noopener noreferrer"
          class="button" 
-         aria-label="Recomnendações no LinkedIn">
-         Geandro Oliveira - Recomendações no LinkedIn
-    </a>
-
+         aria-label="Ver recomendações no LinkedIn (abre em nova aba)">
+         Ver Recomendações no LinkedIn
+      </a>
     </section>
 
-    <section id="palestra" aria-label="Palestra sobre Qualidade de Software">
-      <h2>Palestras: </h2>
-      <h3>QA Solidário</h3>
-      <p>
-        Participei como palestrante no evento <strong>QA Solidário</strong>, mais do que somente um evento técnico, o QA Solidário busca engajar todos os profissionais da área de tecnologia, independentemente de suas especialidades, criando uma rede de apoio que combina o desenvolvimento profissional com ações sociais impactantes.
-      <p>
-        Participei como palestrante no evento QA Solidário, mais do que somente um evento técnico, o QA Solidário busca engajar todos os profissionais da área de tecnologia, independentemente de suas especialidades, criando uma rede de apoio que combina o desenvolvimento profissional com ações sociais impactantes.
-      </p>
-      <p>A missão do Coletivo é simples, mas poderosa: usar o conhecimento e a inovação da área de tecnologia para fazer a diferença na vida de quem mais precisa. Além de promover o crescimento da comunidade de QA, o coletivo colabora com causas sociais em todo o país, mostrando como a união entre solidariedade e tecnologia pode transformar realidades.</p>
-      <p><strong>Segundo dia do evento:</strong></p>
-      <p>Assista à palestra completa no YouTube:</p>
-      <a href="https://www.youtube.com/watch?v=d3_mRLKCdO8" 
-         target="_blank" 
-         class="button" 
-         aria-label="Assistir no YouTube">
-         Assistir no YouTube
-      </a>
-      <p></p>
-      <h3> Centro Universitário FAM</h3>
-      <p>No dia 24 de maio de 2024, fui convidado para realizar uma palestra voltada aos estudantes do curso de Tecnologia do Centro Universitário FAM, com foco na área de Qualidade de Software. A apresentação abordou de forma técnica e crítica os principais mitos que ainda persistem no campo da Garantia da Qualidade, bem como os desafios enfrentados por profissionais da área em um cenário cada vez mais ágil, automatizado e orientado por dados.</p>
-      <p>Durante a exposição, foram discutidos temas como:</p>
-      <ul>
-        <li>A evolução histórica da Qualidade de Software;</li>
-        <li>O papel estratégico da QA na cadeia de valor do desenvolvimento;</li>
-        <li>Os mitos comuns sobre QA e como eles afetam a percepção da área;</li>
-        <li>A importância da automação de testes e as ferramentas mais utilizadas no mercado;</li>
-        <li>Desafios atuais enfrentados por profissionais de QA, incluindo a adaptação às novas tecnologias e metodologias.</li>
-      </ul>
-      <p></p>
-      <p>O objetivo da palestra foi não apenas desmistificar a área de Qualidade de Software, mas também inspirar os alunos a enxergarem as oportunidades e desafios que ela oferece, preparando-os para uma carreira promissora e impactante no setor de tecnologia.</p>
-    <p>Clique nos botões abaixo para ver alguns comentários de alunos FAM,  sobre o evento</p>  
-    <a href="https://www.linkedin.com/posts/henrique-costa-dados_tecnologia-ugcPost-7199779114520584192-WFBJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAjDuxIBd1vfuNefOgse-HW8MYaFwD0_Mfw" 
-         target="_blank" 
-         class="button" 
-         aria-label="Post do Henrique Costa no LinkedIn">
-         Post do Henrique Costa
-    </a>
-    <a href="https://www.linkedin.com/posts/arthuraugusn_hoje-assisti-a-uma-palestra-incr%C3%ADvel-sobre-activity-7199758372248657921-sk3b?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAjDuxIBd1vfuNefOgse-HW8MYaFwD0_Mfw" 
-         target="_blank" 
-         class="button" 
-         aria-label="Post do Arthur Augusto no LinkedIn">
-         Post do Henrique Costa
-    </a>
-    <a href="https://www.linkedin.com/posts/vinicius-camargo10_experi%C3%AAncia-inesquec%C3%ADvel-tive-o-activity-7199758506609049600-h8ai?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAjDuxIBd1vfuNefOgse-HW8MYaFwD0_Mfw" 
-         target="_blank" 
-         class="button" 
-         aria-label="Post do Vinicius Camargo no LinkedIn">
-         Post do Vinicius Camargo
-    </a>
-        </section>
-    <section id="qa-tools">
-      <h2>Simuladores de QA</h2>
-      <p>
-      Simuladores de QA são ferramentas essenciais para profissionais de qualidade de software, permitindo testar e validar aplicações sem a necessidade de ambientes complexos.
-      </p>
-      <p>
-      Essas ferramentas oferecem uma maneira prática e eficiente de simular cenários reais, facilitando a identificação de bugs e a validação de funcionalidades antes do lançamento final.</p>
-      <div class="tools-grid">
-        <div>
-          <h3>Gerador de Dados</h3>
-          <p>Gerador de dados fictícios para testes de cadastros, listas, etc.</p>
-          <a href="https://www.despertarqa.net/gerador-de-pessoas-fisicas" target="_blank">Acessar Ferramenta</a>
+    <section id="palestra" aria-labelledby="talks-heading">
+      <h2 id="talks-heading">Palestras</h2>
+      
+      <article class="talk">
+        <h3>QA Solidário</h3>
+        <p>
+          Participei como palestrante no evento <strong>QA Solidário</strong>, mais do que um evento técnico, uma iniciativa que busca engajar profissionais da área de tecnologia, criando uma rede de apoio que combina desenvolvimento profissional com ações sociais impactantes.
+        </p>
+        <p>
+          A missão do Coletivo é usar o conhecimento e a inovação da área de tecnologia para fazer a diferença na vida de quem mais precisa, promovendo o crescimento da comunidade de QA e colaborando com causas sociais em todo o país.
+        </p>
+        <p><strong>Segundo dia do evento:</strong></p>
+        <a href="https://www.youtube.com/watch?v=d3_mRLKCdO8" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="button" 
+           aria-label="Assistir palestra no YouTube (abre em nova aba)">
+           Assistir no YouTube
+        </a>
+      </article>
+
+      <article class="talk">
+        <h3>Centro Universitário FAM</h3>
+        <p>
+          No dia 24 de maio de 2024, realizei uma palestra voltada aos estudantes do curso de Tecnologia do Centro Universitário FAM, com foco na área de Qualidade de Software. A apresentação abordou de forma técnica e crítica os principais mitos que ainda persistem no campo da Garantia da Qualidade.
+        </p>
+        
+        <h4>Temas abordados:</h4>
+        <ul>
+          <li>A evolução histórica da Qualidade de Software</li>
+          <li>O papel estratégico da QA na cadeia de valor do desenvolvimento</li>
+          <li>Os mitos comuns sobre QA e como eles afetam a percepção da área</li>
+          <li>A importância da automação de testes e as ferramentas mais utilizadas no mercado</li>
+          <li>Desafios atuais enfrentados por profissionais de QA</li>
+        </ul>
+
+        <p>
+          O objetivo foi desmistificar a área de Qualidade de Software e inspirar os alunos a enxergarem as oportunidades e desafios que ela oferece.
+        </p>
+
+        <h4>Comentários dos alunos:</h4>
+        <div class="talk-links">
+          <a href="https://www.linkedin.com/posts/henrique-costa-dados_tecnologia-ugcPost-7199779114520584192-WFBJ" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="button-small">
+             Henrique Costa
+          </a>
+          <a href="https://www.linkedin.com/posts/arthuraugusn_hoje-assisti-a-uma-palestra-incr%C3%ADvel-sobre-activity-7199758372248657921-sk3b" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="button-small">
+             Arthur Augusto
+          </a>
+          <a href="https://www.linkedin.com/posts/vinicius-camargo10_experi%C3%AAncia-inesquec%C3%ADvel-tive-o-activity-7199758506609049600-h8ai" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="button-small">
+             Vinicius Camargo
+          </a>
         </div>
-        <div>
+      </article>
+    </section>
+
+    <section id="qa-tools" aria-labelledby="tools-heading">
+      <h2 id="tools-heading">Simuladores de QA</h2>
+      <p>
+        Simuladores de QA são ferramentas essenciais para profissionais de qualidade de software, permitindo testar e validar aplicações sem a necessidade de ambientes complexos.
+      </p>
+      <p>
+        Essas ferramentas oferecem uma maneira prática e eficiente de simular cenários reais, facilitando a identificação de bugs e a validação de funcionalidades antes do lançamento final.
+      </p>
+      
+      <div class="tools-grid">
+        <article class="tool-card">
+          <h3>Gerador de Dados</h3>
+          <p>Gerador de dados fictícios para testes de cadastros, listas e validações.</p>
+          <a href="https://www.despertarqa.net/gerador-de-pessoas-fisicas" 
+             target="_blank" 
+             rel="noopener noreferrer">
+            Acessar Ferramenta →
+          </a>
+        </article>
+
+        <article class="tool-card">
           <h3>Simulador de API Rest</h3>
           <p>Realiza testes em APIs Rest, métodos GET, POST, PUT e DELETE.</p>
-          <a href="https://www.despertarqa.net/simulador-de-apis-rest" target="_blank">Acessar Ferramenta</a>
-        </div>
-        <div>
+          <a href="https://www.despertarqa.net/simulador-de-apis-rest" 
+             target="_blank" 
+             rel="noopener noreferrer">
+            Acessar Ferramenta →
+          </a>
+        </article>
+
+        <article class="tool-card">
           <h3>Gerador de Cenário de Testes</h3>
-          <p>Criação de cenários de testes com base no input.</p>
-          <p>Esta ferramenta permite que você crie cenários de teste de forma rápida e eficiente, facilitando a documentação e a execução dos testes.Ideal para testes exploratórios</p>
-          <a href="https://www.despertarqa.net/cenarios-de-teste" target="_blank">Acessar Ferramenta</a>
-        </div>
+          <p>Criação de cenários de testes com base no input. Permite criar cenários de forma rápida e eficiente, ideal para testes exploratórios.</p>
+          <a href="https://www.despertarqa.net/cenarios-de-teste" 
+             target="_blank" 
+             rel="noopener noreferrer">
+            Acessar Ferramenta →
+          </a>
+        </article>
       </div>
     </section>
 
-    <section id="contato">
-      <h2>Contato</h2>
-      <p>Entre em contato comigo através das redes sociais ou envie um e-mail.</p>
-      <ul>
-        <li><a href="mailto:bertinmarquez84@gmail.com">E-mail</a></li>
-        <li><a href="https://www.linkedin.com/in/bruno-bertin" target="_blank">LinkedIn</a></li>
-      </ul>
-    </section>
-    
-    <section id="printable-content" style="display: none;">
-      <h1>Resumo do Portfólio</h1>
-      <h2>Mini Currículo</h2>
+    <section id="corrida" aria-labelledby="hobby-heading">
+      <h2 id="hobby-heading">Corrida de Rua</h2>
       <p>
-        Sou Bruno Bertin, especialista em Quality Assurance com experiência em ferramentas como Robot Framework, Playwright, Selenium WebDriver, Cypress, Postman e Pytest. 
-        Desde 2016, venho trilhando uma jornada no universo da tecnologia, com foco em testes funcionais e não funcionais, automação de testes e gestão de qualidade de software.
+        Meu hobby é corrida de rua. Aqui compartilho resultados e um resumo das atividades via Strava. 
+        Se os widgets não carregarem, use o link para o perfil.
       </p>
-      <h2>Experiência</h2>
-      <ul>
-        <li><strong>Exato Digital</strong> - Analista de Testes Pleno (set/2024 - presente)
-          <ul>
-            <li>Reduzi o tempo de execução de testes automatizados em 30%.</li>
-            <li>Implementei uma nova estrutura de testes com Playwright, aumentando a cobertura de testes em 20%.</li>
-          </ul>
-        </li>
-        <li><strong>BBM Technology and Marketing</strong> - Analista Técnico Qualidade de Software (jan/2019 - set/2024)</li>
-        <li><strong>SmartLoad</strong> - Technical Analyst QA (out/2021 - jun/2024)</li>
-        <li><strong>EUNERD</strong> - Analista de Teste/QA (mai/2022 - ago/2023)</li>
-        <li><strong>AT&M Tecnologia</strong> - Suporte Técnico (nov/2019 - mar/2020)</li>
-        <li><strong>AT&M Alta Tecnologia</strong> - Facilitador de Tecnologia (jun/2016 - ago/2019)</li>
-      </ul>
-      <h2>Projetos</h2>
-      <div id="printable-projects">
-        <div>
-          <h3>The Art of Software Testing</h3>
-          <p>Este repositório tem como objetivo implementar, na prática, os exemplos apresentados no livro "The Art of Software Testing". Cada caso de teste é reproduzido com diferentes abordagens e frameworks para que possamos analisar sua eficácia e explorar boas práticas de qualidade de software.</p>
-          <a href="https://github.com/Marquezbertin/art-of-software-testing" target="_blank">Ver no GitHub</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Seção adicionada: Corrida de Rua -->
-    <section id="corrida" aria-label="Corrida de Rua">
-      <h2>Corrida de Rua</h2>
-      <p>Meu hobby é corrida de rua. Aqui compartilho resultados e um resumo das atividades via Strava. Se os widgets não carregarem, use o link para o perfil.</p>
-      <div class="strava-widgets" style="display:flex;gap:16px;flex-wrap:wrap;">
-        <iframe height="454" width="300" frameborder="0" allowtransparency="true" scrolling="no" loading="lazy"
-          src="https://www.strava.com/athletes/137173728/latest-rides/97cbf50ce4474d0cfa0bc7306e69f169c8f3002a" 
-          title="Atividades recentes no Strava"></iframe>
-        <iframe height="160" width="300" frameborder="0" allowtransparency="true" scrolling="no" loading="lazy"
-          src="https://www.strava.com/athletes/137173728/activity-summary/97cbf50ce4474d0cfa0bc7306e69f169c8f3002a" 
-          title="Resumo de atividades no Strava"></iframe>
+      
+      <div class="strava-widgets">
+        <iframe height="454" 
+                width="300" 
+                frameborder="0" 
+                allowtransparency="true" 
+                scrolling="no" 
+                loading="lazy"
+                src="https://www.strava.com/athletes/137173728/latest-rides/97cbf50ce4474d0cfa0bc7306e69f169c8f3002a" 
+                title="Atividades recentes no Strava">
+        </iframe>
+        
+        <iframe height="160" 
+                width="300" 
+                frameborder="0" 
+                allowtransparency="true" 
+                scrolling="no" 
+                loading="lazy"
+                src="https://www.strava.com/athletes/137173728/activity-summary/97cbf50ce4474d0cfa0bc7306e69f169c8f3002a" 
+                title="Resumo de atividades no Strava">
+        </iframe>
       </div>
 
-      <!-- Iframes das últimas duas provas (Chelso) -->
-      <div class="race-results" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;">
+      <h3>Resultados de Provas</h3>
+      <div class="race-results">
         <iframe src="https://chelso.com.br/resultados/#/9-corrida-sao-vicente-uacai-night-run/6631"
                 title="Resultado - São Vicente Uacai Night Run"
-                width="300" height="500" frameborder="0" loading="lazy" allowtransparency="true" scrolling="auto"></iframe>
+                width="300" 
+                height="500" 
+                frameborder="0" 
+                loading="lazy" 
+                allowtransparency="true" 
+                scrolling="auto">
+        </iframe>
 
         <iframe src="https://chelso.com.br/resultados/#/11-corrida-sao-vicente-do-alvinegro/2130"
                 title="Resultado - São Vicente do Alvinegro"
-                width="300" height="500" frameborder="0" loading="lazy" allowtransparency="true" scrolling="auto"></iframe>
+                width="300" 
+                height="500" 
+                frameborder="0" 
+                loading="lazy" 
+                allowtransparency="true" 
+                scrolling="auto">
+        </iframe>
       </div>
 
-      <div class="hobby-note" style="margin-top:12px;">
-        <h3>Meu hobby</h3>
-        <div contenteditable="true" aria-label="Descrição sobre corrida" class="editable-note card" data-placeholder="Escreva aqui sobre seus treinos, objetivos e resultados.">
+      <div class="hobby-note">
+        <h3>Sobre meu hobby</h3>
+        <div class="editable-note card" 
+             contenteditable="true" 
+             role="textbox" 
+             aria-label="Descrição editável sobre corrida"
+             data-placeholder="Escreva aqui sobre seus treinos, objetivos e resultados.">
           A corrida de rua se tornou muito mais do que um exercício físico: é meu momento de liberdade, foco e superação. Cada treino traz uma sensação única de progresso, seja mantendo um pace confortável ou enfrentando percursos desafiadores. Correr me conecta comigo mesmo, fortalece o corpo e acalma a mente. É um hobby que transforma dias comuns em pequenas conquistas — passo após passo.
         </div>
       </div>
-      <p style="margin-top:8px;"><a href="https://www.strava.com/athletes/137173728" target="_blank" rel="noopener">Ver meu perfil no Strava</a></p>
-      <p style="font-size:0.9em;color:#666;">Observação: se o Strava ou o site de resultados bloquearem embeds via X-Frame-Options, os iframes podem não aparecer — use os links diretos.</p>
+
+      <p>
+        <a href="https://www.strava.com/athletes/137173728" 
+           target="_blank" 
+           rel="noopener noreferrer">
+          Ver meu perfil no Strava
+        </a>
+      </p>
+      
+      <p class="note">
+        <small>
+          Observação: se o Strava ou o site de resultados bloquearem embeds via X-Frame-Options, 
+          os iframes podem não aparecer — use os links diretos.
+        </small>
+      </p>
+    </section>
+
+    <section id="contato" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contato</h2>
+      <p>Entre em contato comigo através das redes sociais ou envie um e-mail.</p>
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:bertinmarquez84@gmail.com" aria-label="Enviar e-mail para Bruno Bertin">
+            📧 bertinmarquez84@gmail.com
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/bruno-bertin" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="LinkedIn de Bruno Bertin (abre em nova aba)">
+            💼 LinkedIn
+          </a>
+        </li>
+      </ul>
     </section>
   </main>
+
   <footer>
     <p>© 2025 Bruno Bertin | Todos os direitos reservados</p>
   </footer>
-  <script src="script.js"></script>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
